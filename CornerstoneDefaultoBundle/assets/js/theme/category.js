@@ -4,9 +4,10 @@ import compareProducts from './global/compare-products';
 import FacetedSearch from './common/faceted-search';
 import { createTranslationDictionary } from '../theme/common/utils/translations-utils';
 
-const access_token = 'lpbg5b2f95cbe0f6klulqd9muvnoja6'; // theres likely a much better place/method to store this 
-let cartId; // initializing for later global-ish use
-const removeCartButton = document.getElementById('remove-all-addToCart'); // initializing for later global-ish use
+// with more time, I would find a better way to initialize these global variables and scope them properly 
+const access_token = 'lpbg5b2f95cbe0f6klulqd9muvnoja6'; 
+let cartId;
+const removeCartButton = document.getElementById('remove-all-addToCart'); 
 
 export default class Category extends CatalogPage {
     constructor(context) {
