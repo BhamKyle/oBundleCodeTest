@@ -48,6 +48,10 @@ category:
     {{/if}}
 
     <div class="page-content" id="product-listing-container">
+        {{#if category.id '===' 24 }}
+            {{> components/cart/add-all-button}}
+            {{> components/cart/remove-all-button}}
+        {{/if}}
         {{> components/category/product-listing}}
         {{{region name="category_below_content"}}}
     </div>

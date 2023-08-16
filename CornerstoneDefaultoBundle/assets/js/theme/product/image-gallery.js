@@ -114,4 +114,6 @@ export default class ImageGallery {
     bindEvents() {
         this.$selectableImages.on('click', this.selectNewImage.bind(this));
     }
+
+    
 }
