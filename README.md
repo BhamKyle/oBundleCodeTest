@@ -42,11 +42,11 @@ The storefront API and documetation are extremely straightforward
 
 **If I had more time I would:**
 
-*explore the objects available on each page and their scoping
-*comment more of my code for later re-use
-*find a better way to scope the global variables on category.js
-*add a conditional to the responsive image so it only changes to second image for the special items category
-*add report.html and theme-bundle.chunk.assets files in git.ignore
-*use something like a toast notification instead of a basic alert (i thought about hijacking the search dropdown with a fadeout) but my solution satisfies the requirements
-*add a check to see if the cart already exists, if so, just add items to it, if not, create a cart, so my solution is likely a bit brittle
-*attempt the extra credit portion
+* explore the objects available on each page and their scoping
+* comment more of my code for later re-use
+* find a better way to scope the global variables on category.js
+* add a conditional to the responsive image so it only changes to second image for the special items category
+* add report.html and theme-bundle.chunk.assets files in git.ignore
+* use something like a toast notification instead of a basic alert (i thought about hijacking the search dropdown with a fadeout) but my solution satisfies the requirements
+* add a check to see if the cart already exists, if so, just add items to it, if not, create a cart, so my solution is likely a bit brittle
+* attempt the extra credit portion
