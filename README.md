@@ -3,6 +3,10 @@ Code Test for oBundle
 
 **Overview:**
 
+Hours Taken: 6
+BigCommerce URL: https://obundletest.mybigcommerce.com/?showStore=yes&ctk=f684cd02-2029-4880-8483-ddaac7fa2c2d&_gl=1*pfx9oy*_ga*OTg4NTE1MjAxLjE2OTE4Nzc4Mjg.*_ga_WS2VZYPC6G*MTY5MjIyMjY3Mi45LjEuMTY5MjIyMjcwMy4yOS4wLjA.
+BigCommerce Preview Code: p7j8ymtelh
+
 Thank you for the opportunity to show my skills and apply for your open position. I took about 6 hours to complete this challenge. 
 
 This challenge was to show that I could learn a new ecommerce framework quickly and without much trouble. I enjoyed the tasks and found it to be an engaging challenge. 
