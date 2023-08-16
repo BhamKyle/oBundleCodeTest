@@ -6,6 +6,7 @@ import { createTranslationDictionary } from '../theme/common/utils/translations-
 
 const access_token = 'lpbg5b2f95cbe0f6klulqd9muvnoja6'; // theres likely a much better place/method to store this 
 let cartId; // initializing for later global-ish use
+const removeCartButton = document.getElementById('remove-all-addToCart'); // initializing for later global-ish use
 
 export default class Category extends CatalogPage {
     constructor(context) {
@@ -32,9 +33,7 @@ export default class Category extends CatalogPage {
 
     onReady() {
         this.arrangeFocusOnSortBy();
-        this.secondImageHoverHandler();
         this.cartChecker();
-        this.productChecker();
 
         $('#add-all-addToCart').on('click', (e) => this.addAllToCart());
         $('#remove-all-addToCart').on('click', (e) => this.cartRemover()); 
@@ -111,7 +110,7 @@ export default class Category extends CatalogPage {
         });
     }
     addAllToCart() {
-        //get all productId's in special items category
+        //get all productIds in special items category
 
         let cardElements = document.querySelectorAll('.card.special-hover');
         let productIdValues = [];
@@ -163,7 +162,6 @@ export default class Category extends CatalogPage {
            
             return fetch(resource, init)
             .then(response => {
-              console.log(response);
               if(response.status === endpoint.success) {
                 window.alert('Product has been added to the cart.');
                 return response.json(); // or response.text()
@@ -172,11 +170,8 @@ export default class Category extends CatalogPage {
               }
             })
             .then(result => {
-              console.log(result); // requested data
               // set the new cartId
               cartId = result.id
-              console.log(cartId);
-              const removeCartButton = document.getElementById('remove-all-addToCart');
               removeCartButton.classList.remove('special-items-hide');
             })
             .catch(error => console.error(error));
@@ -185,7 +180,7 @@ export default class Category extends CatalogPage {
         addCartApiCall(endpoint, requestBody);
     }
     cartChecker(){
-        const removeCartButton = document.getElementById('remove-all-addToCart');
+        // configure request
 
         let endpoint = {
             route: "/carts",
@@ -213,7 +208,6 @@ export default class Category extends CatalogPage {
            
             return fetch(resource, init)
             .then(response => {
-              console.log(response);
               if(response.status === endpoint.success) {
                 return response.json(); // or response.text()
               } else {
@@ -261,7 +255,6 @@ export default class Category extends CatalogPage {
            
             return fetch(resource, init)
             .then(response => {
-              const removeCartButton = document.getElementById('remove-all-addToCart');
                 removeCartButton.classList.add('special-items-hide');
               if(response.status === endpoint.success) {
                 window.alert('Your cart is now empty');
@@ -271,57 +264,10 @@ export default class Category extends CatalogPage {
               }
             })
             .then(result => {
-                console.log(result); // requested data
             })
             .catch(error => console.error(error));
         }
 
         deleteCartCall(endpoint);
-    }
-    productChecker(){
-        // https://api.bigcommerce.com/stores/{store_hash}/v3/catalog/products/{product_id}
-
-        let store_hash = 'ammk1evssl'
-
-        let endpoint = {
-            route: "/catalog/products/" + 112, //hardcoded product ID
-            method: "GET", 
-            accept: "application/json",
-            success: 200
-        }
-
-        //request
-
-        const getProductObject = (endpoint, requestBody = null) => {
-            let resource = `https://api.bigcommerce.com/stores/${store_hash}/v3${endpoint.route}`;
-            let init = {
-              method: endpoint.method,
-              credentials: "same-origin",
-              headers: {
-                'X-Auth-Token': access_token,
-                "Accept": endpoint.accept,
-              }
-            }
-            if(requestBody) {
-              init.body = JSON.stringify(requestBody);
-              init.headers["Content-Type"] = endpoint.content;
-            }
-           
-            return fetch(resource, init)
-            .then(response => {
-              console.log(response);
-              if(response.status === endpoint.success) {
-                return response.json(); // or response.text()
-              } else {
-                return new Error(`response.status is ${response.status}`);
-              }
-            })
-            .then(result => {
-                console.log(result);
-            })
-            .catch(error => console.error(error));
-        }
-
-        getProductObject(endpoint);
     }
 }
