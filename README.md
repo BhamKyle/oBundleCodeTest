@@ -4,7 +4,9 @@ Code Test for oBundle
 **Overview:**
 
 Thank you for the opportunity to show my skills and apply for your open position. I took about 6 hours to complete this challenge. 
+
 This challenge was to show that I could learn a new ecommerce framework quickly and without much trouble. I enjoyed the tasks and found it to be an engaging challenge. 
+
 I learned that BigCommerce and Stencil have extensive built-in tools that I just barely scratched the surface on as I completed each of the tasks. 
 
 **My process:**
@@ -33,16 +35,18 @@ I broke down the code challenge into 16 distinct steps:
 **Notes:**
 
 I got stuck on the image hover, normally I would just locate the JS object from a composite listing API and source it directly in JS, but I discovered that the objects are available as arrays in the handlebar templating. 
+
 I had only used Mustache templating, so this was a bit of a learning curve
+
 The storefront API and documetation are extremely straightforward 
 
 **If I had more time I would:**
 
-explore the objects available on each page and their scoping
-comment more of my code for later re-use
-find a better way to scope the global variables on category.js
-add a conditional to the responsive image so it only changes to second image for the special items category
-add report.html and theme-bundle.chunk.assets files in git.ignore
-use something like a toast notification instead of a basic alert (i thought about hijacking the search dropdown with a fadeout) but my solution satisfies the requirements
-add a check to see if the cart already exists, if so, just add items to it, if not, create a cart, so my solution is likely a bit brittle
-attempt the extra credit portion
+*explore the objects available on each page and their scoping
+*comment more of my code for later re-use
+*find a better way to scope the global variables on category.js
+*add a conditional to the responsive image so it only changes to second image for the special items category
+*add report.html and theme-bundle.chunk.assets files in git.ignore
+*use something like a toast notification instead of a basic alert (i thought about hijacking the search dropdown with a fadeout) but my solution satisfies the requirements
+*add a check to see if the cart already exists, if so, just add items to it, if not, create a cart, so my solution is likely a bit brittle
+*attempt the extra credit portion
