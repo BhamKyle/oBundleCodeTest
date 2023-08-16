@@ -34,6 +34,7 @@ export default class Category extends CatalogPage {
         this.arrangeFocusOnSortBy();
         this.secondImageHoverHandler();
         this.cartChecker();
+        this.productChecker();
 
         $('#add-all-addToCart').on('click', (e) => this.addAllToCart());
         $('#remove-all-addToCart').on('click', (e) => this.cartRemover()); 
@@ -109,28 +110,13 @@ export default class Category extends CatalogPage {
             },
         });
     }
-    secondImageHoverHandler() {
-        const specialCard = document.querySelector('.special-hover');
-        console.log(specialCard);
-
-        specialCard.addEventListener('mouseenter', function() {
-            // Your code to execute when hovering over the special-hover div
-            console.log("Hovering over special-hover div!");
-            // Add more code here if needed
-          });
-        
-          specialCard.addEventListener('mouseleave', function() {
-            // Your code to execute when leaving the special-hover div
-            console.log("Leaving special-hover div!");
-            // Add more code here if needed
-          });
-    }
     addAllToCart() {
-
         //get all productId's in special items category
 
         let cardElements = document.querySelectorAll('.card.special-hover');
         let productIdValues = [];
+
+        //add product ids to array
 
         cardElements.forEach(function(cardElement) {
             var specialProductId = cardElement.getAttribute('data-entity-id');
@@ -139,12 +125,9 @@ export default class Category extends CatalogPage {
             }
           });
 
-        console.log(productIdValues[0]);
-
-        // const apiEndpoint = 'https://api.bigcommerce.com/stores/ammk1evssl/v3/carts';
+        // configure request
 
         let endpoint = {
-            // route: "/carts/123abc45-de67-89f0-123a-bcd456ef7890/items", 
             route: "/carts",
             method: "POST", 
             accept: "application/json",
@@ -160,6 +143,8 @@ export default class Category extends CatalogPage {
                 }
             ]
         }
+
+        //request
 
         const addCartApiCall = (endpoint, requestBody = null) => {
             let resource = `${window.location.origin}/api/storefront${endpoint.route}`;
@@ -209,6 +194,8 @@ export default class Category extends CatalogPage {
             success: 200
         }
 
+        //request
+
         const getCartApiCall = (endpoint, requestBody = null) => {
             let resource = `${window.location.origin}/api/storefront${endpoint.route}`;
             let init = {
@@ -234,7 +221,6 @@ export default class Category extends CatalogPage {
               }
             })
             .then(result => {
-              console.log(result); // requested data
               if(!result.length){  // if there is no data in the result array hide the clear all button
                 // unhide clear all button
                 removeCartButton.classList.add('special-items-hide');
@@ -256,6 +242,8 @@ export default class Category extends CatalogPage {
             success: 204
         }
 
+        //request
+
         const deleteCartCall = (endpoint, requestBody = null) => {
             let resource = `${window.location.origin}/api/storefront${endpoint.route}`;
             let init = {
@@ -273,7 +261,6 @@ export default class Category extends CatalogPage {
            
             return fetch(resource, init)
             .then(response => {
-              console.log(response);
               const removeCartButton = document.getElementById('remove-all-addToCart');
                 removeCartButton.classList.add('special-items-hide');
               if(response.status === endpoint.success) {
@@ -290,5 +277,51 @@ export default class Category extends CatalogPage {
         }
 
         deleteCartCall(endpoint);
+    }
+    productChecker(){
+        // https://api.bigcommerce.com/stores/{store_hash}/v3/catalog/products/{product_id}
+
+        let store_hash = 'ammk1evssl'
+
+        let endpoint = {
+            route: "/catalog/products/" + 112, //hardcoded product ID
+            method: "GET", 
+            accept: "application/json",
+            success: 200
+        }
+
+        //request
+
+        const getProductObject = (endpoint, requestBody = null) => {
+            let resource = `https://api.bigcommerce.com/stores/${store_hash}/v3${endpoint.route}`;
+            let init = {
+              method: endpoint.method,
+              credentials: "same-origin",
+              headers: {
+                'X-Auth-Token': access_token,
+                "Accept": endpoint.accept,
+              }
+            }
+            if(requestBody) {
+              init.body = JSON.stringify(requestBody);
+              init.headers["Content-Type"] = endpoint.content;
+            }
+           
+            return fetch(resource, init)
+            .then(response => {
+              console.log(response);
+              if(response.status === endpoint.success) {
+                return response.json(); // or response.text()
+              } else {
+                return new Error(`response.status is ${response.status}`);
+              }
+            })
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => console.error(error));
+        }
+
+        getProductObject(endpoint);
     }
 }

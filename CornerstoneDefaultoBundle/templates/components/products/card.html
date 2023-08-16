@@ -73,7 +73,10 @@
                     fallback_size=theme_settings.productgallery_size
                     lazyload=theme_settings.lazyload_mode
                     default_image=theme_settings.default_image_product
+                    onmouseenter="this.src='{{getImage images.[1] img size (cdn default)}}'"
                 }}
+
+                {{log getImage images.[1]}}
             </div>
         </a>
 
