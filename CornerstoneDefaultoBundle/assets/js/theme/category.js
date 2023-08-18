@@ -5,7 +5,6 @@ import FacetedSearch from './common/faceted-search';
 import { createTranslationDictionary } from '../theme/common/utils/translations-utils';
 
 // with more time, I would find a better way to initialize these global variables and scope them properly 
-const access_token = 'lpbg5b2f95cbe0f6klulqd9muvnoja6'; 
 let cartId;
 const removeCartButton = document.getElementById('remove-all-addToCart'); 
 
@@ -152,7 +151,7 @@ export default class Category extends CatalogPage {
               method: endpoint.method,
               credentials: "same-origin",
               headers: {
-                'X-Auth-Token': access_token,
+                // 'X-Auth-Token': access_token,
                 "Accept": endpoint.accept,
               }
             }
@@ -198,7 +197,7 @@ export default class Category extends CatalogPage {
               method: endpoint.method,
               credentials: "same-origin",
               headers: {
-                'X-Auth-Token': access_token,
+                // 'X-Auth-Token': access_token,
                 "Accept": endpoint.accept,
               }
             }
@@ -245,7 +244,7 @@ export default class Category extends CatalogPage {
               method: endpoint.method,
               credentials: "same-origin",
               headers: {
-                'X-Auth-Token': access_token,
+                // 'X-Auth-Token': access_token,
                 "Accept": endpoint.accept,
               }
             }
