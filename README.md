@@ -53,4 +53,3 @@ The storefront API and documetation are extremely straightforward
 * add report.html and theme-bundle.chunk.assets files in git.ignore
 * use something like a toast notification instead of a basic alert (i thought about hijacking the search dropdown with a fadeout) but my solution satisfies the requirements
 * add a check to see if the cart already exists, if so, just add items to it, if not, create a cart, so my solution is likely a bit brittle
-* attempt the extra credit portion
