@@ -4,6 +4,20 @@ category:
     products:
         limit: {{theme_settings.categorypage_products_per_page}}
 ---
+
+<!-- this is not mobile optimized. Probably wouldn't attempt this much info on a banner if not for the challenge -->
+{{#if customer}}
+    {{#if category.id '===' 24 }}
+        {{#if customer}}
+        <div class="ec-banner">
+            <span class="preview">Welcome back, {{customer.name}}!</span>
+            <span> Hows the weather in {{customer.shipping_address.state}}?</span>
+            <span>Can we still reach you at {{customer.email}}?</span>
+        </div>
+        {{/if}}
+    {{/if}}
+{{/if}}
+
 {{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
 {{#partial "head"}}
     {{#if pagination.category.previous}}
