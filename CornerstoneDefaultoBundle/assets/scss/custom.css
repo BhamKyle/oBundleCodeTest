@@ -1,3 +1,13 @@
 .special-items-hide {
   display: none;
+}
+
+.ec-banner {
+  background-color: #3498db;
+  color: #ffffff;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  justify-content: space-evenly;
 }/*# sourceMappingURL=custom.css.map */
